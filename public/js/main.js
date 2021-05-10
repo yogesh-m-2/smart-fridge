@@ -1,4 +1,7 @@
-
+const libapi= require("./fastapi.js");
+global.globalString;
+let keep;
+const fs = require('fs');
 function outputMessage(){
   console.log("here");
   const div = document.createElement('div');
@@ -16,13 +19,11 @@ function add(){
   console.log("Added");
 }
 
-function url(){
-  return "https://i.imgur.com/DDhe5aq.jpeg";
+
+function imagecontrol() {
+  url="https://i.imgur.com/DDhe5aq.jpeg"
+  res=libapi.Fapi()
+  return 1
 }
 
-function logging(obj) {
-  //console.log(obj);
-  globalString=obj
-}
-
-module.exports = { add,outputMessage,url,logging };
+module.exports = { add,outputMessage,imagecontrol };

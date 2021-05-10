@@ -1,5 +1,8 @@
 const lib= require("./main.js");
-let obj;
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb+srv://yogesh:yogesh14@cluster0.eauui.mongodb.net/test'
+
+
 function Fapi(){
   var unirest = require("unirest");
 
@@ -13,16 +16,27 @@ function Fapi(){
   });
 
   req.form({
-  	"objectUrl": lib.url()
+  	"objectUrl": "https://i.imgur.com/DDhe5aq.jpeg"
   });
 
 
   req.end(function (res) {
   	if (res.error) throw new Error(res.error);
-   obj=res.body.Labels
-   //console.log(obj)
-   lib.logging(obj)
-
+    if (res.error) return 0;
+   //myobj=res.body.Labels
+   MongoClient.connect(url, function(err, db) {
+     if (err) throw err;
+     if (err) return 0;
+     var dbo = db.db("fridge");
+     //var myobj = { name: "Company Inc", address: "Highway 37" };
+     var myobj=res.body
+     dbo.collection("items").insertOne(myobj, function(err, res) {
+       if (err) throw err;
+       if (err) return 0;
+       console.log("1 document inserted");
+       db.close();
+     });
+   });
   })
 
 }
