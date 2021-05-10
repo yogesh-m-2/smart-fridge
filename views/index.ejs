@@ -5,10 +5,11 @@
     <title></title>
   </head>
   <body>
-  
+
     <ul>
 <%for (var result in body){%>
-  <li><%=result%>:<%=body[result].Name %></li>
+  <li><%=result%>:<%=body[result].Name %> <%=result%>:<%=body[result].Confidence %></li>
+
   <%}%>
 </ul>
   </body>
