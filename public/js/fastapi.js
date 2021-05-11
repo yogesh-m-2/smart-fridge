@@ -16,7 +16,7 @@ function Fapi(){
   });
 
   req.form({
-  	"objectUrl": "https://i.imgur.com/DDhe5aq.jpeg"
+  	"objectUrl": "https://inside-fridge.s3.us-east-2.amazonaws.com/sfridge.jpeg"
   });
 
 
