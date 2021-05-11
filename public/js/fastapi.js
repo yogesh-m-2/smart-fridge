@@ -3,7 +3,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://yogesh:yogesh14@cluster0.eauui.mongodb.net/test'
 
 
-function Fapi(){
+function Fapi(url){
   var unirest = require("unirest");
 
   var req = unirest("POST", "https://deep-image-object-recognition.p.rapidapi.com/prod");
@@ -16,7 +16,7 @@ function Fapi(){
   });
 
   req.form({
-  	"objectUrl": "https://inside-fridge.s3.us-east-2.amazonaws.com/sfridge.jpeg"
+  	"objectUrl": url
   });
 
 

@@ -22,7 +22,7 @@ function add(){
 
 function imagecontrol() {
   url="https://i.imgur.com/DDhe5aq.jpeg"
-  res=libapi.Fapi()
+  res=libapi.Fapi(url)
   return 1
 }
 
