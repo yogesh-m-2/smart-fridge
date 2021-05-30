@@ -1,0 +1,285 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+}
+.hero
+{
+  height: 100vh;
+  background-image: url(19366.jpg);
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+  position: relative;
+}
+.nav-bar{
+display: flex;
+padding: 40px 120px;
+
+
+}
+
+.nav-logo img
+{
+width: 135px;
+}
+
+.nav-links{
+  flex: 1;
+}
+.nav-links ul{
+  margin-left: 50px;
+  display: inline;
+}
+.nav-links ul li{
+  list-style: none;
+  display: inline-block;
+  padding: 8px 25px;
+}
+
+.nav-links ul a{
+  color: #00008B;
+  text-decoration: none;
+  font-size: 20px
+}
+
+.nav-links ul li::after{
+  content: '';
+  width: 0;
+  height:2px;
+  background: #00008B;
+  display: block;
+  margin: auto;
+  transition: .5s;
+}
+
+.nav-links ul li:hover::after{
+  width: 100%;
+}
+.btn{
+  padding: 10px 20px;
+   border: 0;
+   background: #00008B;
+   font-weight: bold;
+   cursor: pointer;
+   color: #ffff;
+   text-align: center;
+}
+.banner-title{
+  margin: -20px 120px;
+  color: #000000;
+  text-align: center;
+}
+.banner-title h1{
+  font-size: 30px;
+margin-bottom: 30px;
+
+}
+
+.banner-title h1 span{
+  color:#00008B;
+}
+.vertical-bar{
+  height: 100%;
+  background: #000;
+  top:0;
+  left:0;
+  position:absolute;
+}
+.search-icon .fa{
+  margin:45px 23px;
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.social-icons{
+  height:35%;
+  width: 80px;
+  background: #00008B;
+  text-align: center;
+  padding-top: 27%;
+  bottom: 0;
+  position: absolute;
+
+}
+
+.social-icons .fa{
+  margin: 15px 23px;
+  display: block;
+  padding: 8px;
+}
+.notifications{
+  display: flex;
+  width: 400px;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background: #00008B;
+  align-items: center;
+}
+
+.contents{
+  flex-basis: 50%;
+  padding: 10px;
+
+
+}
+
+.notification-img{
+  flex-basis: 50%;
+}
+
+.notification-img img{
+  width:100%;
+}
+
+.writing{
+  font-family: "Lucida Console";
+  color:#ffff;
+  size:50%
+}
+.nav-bar .fa{
+  display: none;
+}
+
+.testing{
+  padding: 120px 100px
+}
+
+.table-container{
+  padding: 0 10%;
+  margin: 40px auto 0;
+}
+
+.heading{
+  font-size: 40px;
+  text-align: center;
+  color: #f1f1f1;
+  margin-bottom: 40px;
+}
+.table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead{
+  background-color: #00008B;
+}
+
+.table thead tr th{
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.35px;
+  color: #FFFFFF;
+  opacity: 1;
+  padding: 12px;
+  vertical-align: top;
+  border: 1px solid #dee2e685;
+}
+.table tbody tr td{
+  font-size: 14px;
+  letter-spacing: 0.35px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #dee2e685;
+}
+@media (max-width: 700) {
+  .vertical-bar{
+    display:none;
+  }
+
+}
+
+@media (max-width: 420px){
+
+  .vertical-bar{
+    display: none;
+  }
+
+  .banner-title{
+    margin:80px 40px;
+  }
+  .banner-title h1{
+    font-size: 50px;
+  }
+
+  .about{
+    display: none;
+  }
+
+/*  .notifications{
+    width: 100%;
+  }
+  .nav-bar{
+    padding: 10px 30px;
+  }
+  .fa-bars{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
+  .nav-bar .fa{
+    display: block;
+    color: #00008B;
+    margin: 10px 25px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .nav-links{
+    height: 100vh;
+    width: 200px;
+    background: #fff;
+    top: 0;
+    right: -200px;
+    position: absolute;
+    text-align: left;
+    z-index: 2;
+  }
+
+  .nav-links ul a{
+    display: block;
+  }
+
+  .nav-links .btn{
+    float: none;
+    margin-left: 25px;
+    margin-top: 10px;
+  }*/
+
+  .table thead{
+    display: none;
+  }
+  .table, .table tbody, .table tr, .table td{
+    display: block;
+    width: 100%;
+  }
+
+  .table tr{
+    margin-bottom: 15px;
+  }
+
+  .table tbody tr td{
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+
+  }
+
+  .table td: before{
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: left;
+  }
+
+}
