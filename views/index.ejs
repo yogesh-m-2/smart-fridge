@@ -1,16 +1,80 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<!<head>
+    <title>Smart Refridgerator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+
   </head>
-  <body>
+  <body >
+    <div class="hero">
+      <div class="nav-bar">
+        <div class="nav-logo">
+          <img src="logo.png" >
+        </div>
+        <div class="nav-links" id="nav-links">
+          <i class="fa fa-close" onclick="closeMenu()"></i>
+        <ul>
 
-    <ul>
-<%for (var result in body){%>
-  <li><%=result%>:<%=body[result].Name %> <%=result%>:<%=body[result].Confidence %></li>
+          <a href="#" class="about"><li>HOME</li></a>
+          <a href="#" class="about"><li>ABOUT</li></a>
+        </ul>
+      </div>
+      <i class="fa fa-bars" onclick="showMenu()"></i>
+      </div>
+      <div class="banner-title">
+        <h1>What is in my <span>Smart-Fridge</span>?</h1>
+        </div>
+        <!--Table Design-->
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Initial Date</th>
+                <th>Expiry Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%for (var result in body){%>
+              <tr>
+                <td data-label="Item"><%= body[result].Name %></td>
+                <td>01/01/2000</td>
+                <td>01/01/2001</td>
+              </tr>
+              <%}%>
+            </tbody>
+          </table>
 
-  <%}%>
-</ul>
+        </div>
+
+
+        <!--Table Design Ends-->
+
+      <!--  <button type="button" class="btn">EXPLORE</button>
+
+      <div class="vertical-bar">
+        <div class="search-icon">
+        <i class="fa fa-th-list"></i>
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="social-icons">
+
+
+
+      </div>
+      </div>
+
+      <div class="notifications">
+        <div class="contents"></div>
+        <small class="writing">Check the contents in your Fridge!</small>
+        <div class="notifications-img"></div>
+        <img src="" >
+      </div>
+    -->
+
+
+  </div><!--hero-->
+
+</div>
   </body>
 </html>
