@@ -11,7 +11,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 
-const results=[];
+var results=[];
 
 
 
@@ -27,7 +27,7 @@ var url = ('mongodb+srv://yogesh:yogesh14@cluster0.eauui.mongodb.net/test')
 
 app.get("/",function(request,response){
 var resbody;
-
+results=[];
 fs.createReadStream('result.csv')
 .pipe(csv({})).on('data',(data)=>results.push(data))
 .on('end',()=>{
