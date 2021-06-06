@@ -51,7 +51,7 @@ fs.createReadStream('result.csv')
 function deletefile(pathToFile){
   fs.unlink(pathToFile, function(err) {
     if (err) {
-      throw err
+      return("already exist")
     } else {
       console.log("Successfully deleted the file.");
     }
