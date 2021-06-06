@@ -74,7 +74,6 @@ function download(){
       resolve('1');
   })
   })
-
 }
 
 async function imagecontrol() {
