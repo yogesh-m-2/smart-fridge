@@ -75,3 +75,11 @@ app.get("/filter",function(request,response){
   libapi.filter();
   response.json({ status: 'ok' });
 })
+app.get("/csv",function(request,response){
+  libapi.filter();
+  response.sendFile(__dirname+"/out.csv");
+})
+app.get("/items",function(request,response){
+  libapi.filter();
+  response.sendFile(__dirname+"/items.csv");
+})
