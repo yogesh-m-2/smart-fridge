@@ -60,7 +60,7 @@ function deletefile(pathToFile){
 
 app.get("/insert",function(request,response){
   deletefile('out.csv');
-  deletefile('result.csv')
+  //deletefile('result.csv')
   res=lib.imagecontrol();
   console.log(res);
   if(res==0){
