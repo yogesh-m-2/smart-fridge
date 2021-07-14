@@ -60,7 +60,7 @@ function deletefile(pathToFile){
 
 app.get("/insert",function(request,response){
   deletefile('out.csv');
-  //deletefile('result.csv')
+  deletefile('result.csv')
   res=lib.imagecontrol();
   console.log(res);
   if(res==0){
@@ -82,4 +82,8 @@ app.get("/csv",function(request,response){
 app.get("/items",function(request,response){
   libapi.filter();
   response.sendFile(__dirname+"/items.csv");
+})
+app.get("/result",function(request,response){
+  libapi.filter();
+  response.sendFile(__dirname+"/result.csv");
 })
