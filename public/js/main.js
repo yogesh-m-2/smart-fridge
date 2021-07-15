@@ -75,7 +75,6 @@ function download(){
   })
   })
 }
-
 async function imagecontrol() {
 await download();
 await ImageSlicer.slice('./imagesFolder', ['.png','.jpg','.jpeg'], 180, 180, './output', {r:255, g:255, b:255, a:255})
