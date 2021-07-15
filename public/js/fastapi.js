@@ -43,29 +43,29 @@ function Fapi(url){
 
   var unirest = require("unirest");
 
-  var req = unirest("POST", "https://deep-image-object-recognition.p.rapidapi.com/prod");
+var req = unirest("POST", "https://deep-image-object-recognition.p.rapidapi.com/prod");
 
-  req.headers({
-    "content-type": "application/x-www-form-urlencoded",
-    "x-rapidapi-key": "d34f3aadc1msh554f99688cb8275p1b3612jsn83604ca0ccea",
-    "x-rapidapi-host": "deep-image-object-recognition.p.rapidapi.com",
-    "useQueryString": true
-  });
+req.headers({
+	"content-type": "application/x-www-form-urlencoded",
+	"x-rapidapi-key": "d34f3aadc1msh554f99688cb8275p1b3612jsn83604ca0ccea",
+	"x-rapidapi-host": "deep-image-object-recognition.p.rapidapi.com",
+	"useQueryString": true
+});
 
-  req.form({
-    "objectUrl": url
-  });
+req.form({
+	"objectUrl": url
+});
 
 
   req.end(function (res) {
 
-    if (res.error) throw new Error(res.error);
-    if (res.error) return 0;
+if (res.error) throw new Error(res.error);
+if (res.error) return 0;
 var myobj=res.body;
 var jsn=myobj.Labels
 
 writecsv(jsn);
-   
+
    //  MongoClient.connect(urli,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, function(err, db) {
    //   if (err) throw err;
    //   if (err) return 0;

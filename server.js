@@ -26,27 +26,40 @@ const fastcsv = require('csv-parser');
 var url = ('mongodb+srv://yogesh:yogesh14@cluster0.eauui.mongodb.net/test')
 
 app.get("/",function(request,response){
-var resbody;
-results=[];
-fs.createReadStream('result.csv')
-.pipe(csv({})).on('data',(data)=>results.push(data))
-.on('end',()=>{
-  response.render('index',{body:results})
-})
+  try{
+    var resbody;
+    results=[];
+    fs.createReadStream('result.csv')
+    .pipe(csv({})).on('data',(data)=>results.push(data))
+    .on('end',()=>{
+      response.render('index',{body:results})
+    })
 
-  // MongoClient.connect(url, function(err, db) {
-  //   if (err) throw err;
-  //   var dbo = db.db("fridge");
-  //   //Find the first document in the customers collection:
-  //   dbo.collection("filtered").findOne({}, function(err, result) {
-  //     if (err) throw err;
-  //     console.log(result);
-  //     resbody=result
-  //     response.render('index',{body:resbody})
-  //     db.close();
-  //   });
-  // });
-});
+      // MongoClient.connect(url, function(err, db) {
+      //   if (err) throw err;
+      //   var dbo = db.db("fridge");
+      //   //Find the first document in the customers collection:
+      //   dbo.collection("filtered").findOne({}, function(err, result) {
+      //     if (err) throw err;
+      //     console.log(result);
+      //     resbody=result
+      //     response.render('index',{body:resbody})
+      //     db.close();
+      //   });
+      // });
+    }
+    catch{
+      sleep(20)
+    }
+  }
+
+);
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 function deletefile(pathToFile){
   fs.unlink(pathToFile, function(err) {
