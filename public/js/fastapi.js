@@ -51,7 +51,7 @@ stub.PostModelOutputs(
     {
         // This is the model ID of a publicly available General model. You may use any other public or custom model ID.
         model_id: "aaa03c23b3724a16a56b629203edc62c",
-        inputs: [{data: {image: {url: "https://samples.clarifai.com/dog2.jpeg"}}}]
+        inputs: [{data: {image: {url: url}}}]
     },
     metadata,
     (err, response) => {
