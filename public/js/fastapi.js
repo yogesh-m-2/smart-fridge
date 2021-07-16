@@ -9,7 +9,7 @@ const fs = require('fs');
 const csvWriter = createCsvWriter({
   path: 'out.csv',
   header: [
-    {id: 'Name', title: 'Name'},
+    {id: 'name', title: 'name'},
   ]
 });
 const csvWriter2 = createCsvWriter({
@@ -40,31 +40,64 @@ function writecsv2(res){
 
 
 function Fapi(url){
+  const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
 
-  var unirest = require("unirest");
+const stub = ClarifaiStub.grpc();
 
-var req = unirest("POST", "https://deep-image-object-recognition.p.rapidapi.com/prod");
+const metadata = new grpc.Metadata();
+metadata.set("authorization", "Key 583c9aee7a334e84838ef5f5ca845d1e");
 
-req.headers({
-	"content-type": "application/x-www-form-urlencoded",
-	"x-rapidapi-key": "d34f3aadc1msh554f99688cb8275p1b3612jsn83604ca0ccea",
-	"x-rapidapi-host": "deep-image-object-recognition.p.rapidapi.com",
-	"useQueryString": true
-});
+stub.PostModelOutputs(
+    {
+        // This is the model ID of a publicly available General model. You may use any other public or custom model ID.
+        model_id: "aaa03c23b3724a16a56b629203edc62c",
+        inputs: [{data: {image: {url: "https://samples.clarifai.com/dog2.jpeg"}}}]
+    },
+    metadata,
+    (err, response) => {
+        if (err) {
+            console.log("Error: " + err);
+            return;
+        }
 
-req.form({
-	"objectUrl": url
-});
+        if (response.status.code !== 10000) {
+            console.log("Received failed status: " + response.status.description + "\n" + response.status.details);
+            return;
+        }
+
+        console.log("Predicted concepts, with confidence values:")
+        console.log(response.outputs[0].data.concepts);
+        var jsn=response.outputs[0].data.concepts
+
+        writecsv(jsn);
+
+    }
+);
 
 
-  req.end(function (res) {
+//   var unirest = require("unirest");
+//
+// var req = unirest("POST", "https://deep-image-object-recognition.p.rapidapi.com/prod");
+//
+// req.headers({
+// 	"content-type": "application/x-www-form-urlencoded",
+// 	"x-rapidapi-key": "d34f3aadc1msh554f99688cb8275p1b3612jsn83604ca0ccea",
+// 	"x-rapidapi-host": "deep-image-object-recognition.p.rapidapi.com",
+// 	"useQueryString": true
+// });
+//
+// req.form({
+// 	"objectUrl": url
+// });
+//
+//
+//   req.end(function (res) {
+//
+// if (res.error) throw new Error(res.error);
+// if (res.error) return 0;
+// var myobj=res.body;
+// console.log(myobj.Labels);
 
-if (res.error) throw new Error(res.error);
-if (res.error) return 0;
-var myobj=res.body;
-var jsn=myobj.Labels
-
-writecsv(jsn);
 
    //  MongoClient.connect(urli,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, function(err, db) {
    //   if (err) throw err;
@@ -80,7 +113,7 @@ writecsv(jsn);
    //     db.close();
    //   });
    // });
-  })
+
 
 
 }
@@ -94,13 +127,13 @@ function filter(){
   fs.createReadStream('out.csv')
   .pipe(csv())
   .on('data', (row1) => {
-
    fs.createReadStream('items.csv').pipe(csv()).on('data',(row2)=>{
-      if(row1.Name==row2.Item && !array1.includes(row2.Item) ) {
+      if(row1.name==row2.Item && !array1.includes(row2.Item) ) {
         array1.push(row2.Item);
         row2=[
           row2
         ]
+
         writecsv2(row2);
       }
 
@@ -108,6 +141,8 @@ function filter(){
 
   })
   .on('end', () => {
+    row2=[ { Item: 'end of list' } ]
+    writecsv2(row2);
     console.log('CSV file successfully processed');
   });
 
