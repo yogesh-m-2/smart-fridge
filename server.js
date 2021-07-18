@@ -8,7 +8,7 @@ const bodyparser = require('body-parser');
 const csv = require('csv-parser');
 const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
-
+var moment = require('moment');
 
 
 var results=[];
@@ -32,7 +32,7 @@ app.get("/",function(request,response){
     fs.createReadStream('result.csv')
     .pipe(csv({})).on('data',(data)=>results.push(data))
     .on('end',()=>{
-      response.render('index',{body:results})
+      response.render('index',{body:results,moment:moment})
     })
 
       // MongoClient.connect(url, function(err, db) {

@@ -16,6 +16,7 @@ const csvWriter2 = createCsvWriter({
   path: 'result.csv',
   header: [
     {id: 'Item', title: 'Item'},
+    {id: 'Days', title: 'Days'},
   ]
 });
 
@@ -133,7 +134,6 @@ function filter(){
         row2=[
           row2
         ]
-
         writecsv2(row2);
       }
 
