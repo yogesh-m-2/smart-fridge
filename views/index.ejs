@@ -38,8 +38,8 @@
               <%for (var result in body){%>
               <tr>
                 <td data-label="Item"><%= body[result].Item %></td>
-                <td><%= moment().format('Do MMMM, YYYY'); %></td>
-                <td><%=body[result].Days%></td>
+                <td><%= moment().format('DD-MM-YYYY') %></td>
+                <td><%=moment().add(body[result].Days, 'days').format('DD-MM-YYYY')%></td>
               </tr>
               <%}%>
             </tbody>
