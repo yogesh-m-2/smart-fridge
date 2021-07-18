@@ -69,40 +69,44 @@ function download(){
       if (err) {
           throw err
       }
-      fs.writeFileSync('./imagesFolder/s.jpeg', data.Body)
+      fs.writeFileSync('./imagesFolder/s.png', data.Body)
       console.log('file downloaded successfully')
       resolve('1');
   })
   })
 }
-async function imagecontrol() {
-await download();
-await ImageSlicer.slice('./imagesFolder', ['.png','.jpg','.jpeg'], 180, 180, './output', {r:255, g:255, b:255, a:255})
-.then((numberImagesWritten) => {
-  console.log(numberImagesWritten.toString(),'images written');
-   for(var i=0;i<20;i++){
-    const fileName='\output/s_'+i+'.jpeg';
-    uploadFile(fileName);
-  }
-}).catch((err) => {
-  console.log(err);
-});
-// await MongoClient.connect(urli,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, function(err, db) {
-//   if (err) throw err;
-//   if (err) return 0;
-//   var dbo = db.db("fridge");
-//
-//  dbo.collection("items").remove({})
-//  .then(console.log("removed"));
-//  dbo.collection("filtered").remove({})
-//  .then(console.log("removed"));
-//
+// async function imagecontrol() {
+// await download();
+// await ImageSlicer.slice('./imagesFolder', ['.png','.jpg','.jpeg'], 180, 180, './output', {r:255, g:255, b:255, a:255})
+// .then((numberImagesWritten) => {
+//   console.log(numberImagesWritten.toString(),'images written');
+//    for(var i=0;i<20;i++){
+//     const fileName='\output/s_'+i+'.jpeg';
+//     uploadFile(fileName);
+//   }
+// }).catch((err) => {
+//   console.log(err);
 // });
-for(var i=0;i<20;i++){
-  await libapi.Fapi('https://inside-fridge.s3.us-east-2.amazonaws.com/s_'+i+'.jpeg');
-}
+// // await MongoClient.connect(urli,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, function(err, db) {
+// //   if (err) throw err;
+// //   if (err) return 0;
+// //   var dbo = db.db("fridge");
+// //
+// //  dbo.collection("items").remove({})
+// //  .then(console.log("removed"));
+// //  dbo.collection("filtered").remove({})
+// //  .then(console.log("removed"));
+// //
+// // });
+// for(var i=0;i<20;i++){
+//   await libapi.Fapi('https://inside-fridge.s3.us-east-2.amazonaws.com/s_'+i+'.jpeg');
+// }
+//
+//   return 1
+// }
 
-  return 1
+function imagecontrol(){
+  libapi.Fapi('https://inside-fridge.s3.us-east-2.amazonaws.com/opencv_frame_0.png');
 }
 
 module.exports = { add,outputMessage,imagecontrol };
