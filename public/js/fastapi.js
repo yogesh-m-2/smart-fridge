@@ -155,6 +155,8 @@ function filter(){
   .on('data', (row1) => {
    fs.createReadStream('items.csv').pipe(csv()).on('data',(row2)=>{
       if(row1.Name==row2.Item && !array1.includes(row2.Item) ) {
+        console.log(row1.Name);
+        console.log(row2.Item);
         array1.push(row2.Item);
         row2=[
           row2
