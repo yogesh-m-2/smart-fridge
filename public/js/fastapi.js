@@ -51,7 +51,7 @@ metadata.set("authorization", "Key 583c9aee7a334e84838ef5f5ca845d1e");
 stub.PostModelOutputs(
     {
         // This is the model ID of a publicly available General model. You may use any other public or custom model ID.
-        model_id: "aaa03c23b3724a16a56b629203edc62c",
+        model_id: "9504135848be0dd2c39bdab0002f78e9",
         inputs: [{data: {image: {url: url}}}]
     },
     metadata,
