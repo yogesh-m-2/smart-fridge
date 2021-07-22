@@ -70,7 +70,7 @@ stub.PostModelOutputs(
         console.log(response.outputs[0].data.concepts);
         var jsn=response.outputs[0].data.concepts
          writecsv(jsn);
-
+)
 // var unirest = require("unirest");
 //
 // var req = unirest("POST", "https://deep-image-object-recognition.p.rapidapi.com/prod");
